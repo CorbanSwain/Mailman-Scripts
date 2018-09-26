@@ -63,7 +63,7 @@ def refine_email_list(emails):
     new_emails = []
     for email in emails:
         head, tail = email.split('@')
-        new_emails.append('@'.join([head, tail.lower()]))
+        new_emails.append('@'.join([head.strip(), tail.lower().strip()]))
     new_emails = set(new_emails)
     return new_emails
 
@@ -95,10 +95,4 @@ def subscribe_members(list_name, emails):
 
 
 if __name__ == "__main__":
-    list_name = 'bgsa'
-    print('\n')
-    print('Fetching Members for list: {:s}'.format(list_name))
-    all_emails = refine_email_list(get_all_members(list_name))
-    pp.pprint('Number of total emails: %d' % len(all_emails))
-    subscribe_members('bgsa', ['corbanswain@gmail.com',
-                               'corbanswainphoto@gmail.com'])
+    subscribe_members('bgsa', ['DJuan.Sampson@tufts.edu'])
